@@ -4,13 +4,13 @@ README for speech-to-browser
 speech-to-browser is a demo application for [libmp3lame.js][0], 
 based on the [speech-to-server][1] demo.
 
-This demo records audio input from the microphone and encodes it into MP3 data.
+This demo records audio input from the microphone and encodes it _client-based_ to MP3 data.
 
-In difference to [speech-to-server][1], this demo does not require a server,
-that is, the audio is not sent to server, but instead stored locally into a
+In difference to [speech-to-server][1], this demo does not require a server for storing the,
+encoded data, that is, the audio is not sent to server, but instead stored locally into a
 blob/buffer. 
 
-On stopping the recording, a download link for the encoded MP3 is opened.
+When the recording is stopped, a download link for the encoded MP3 is triggered.
 
 
 The idea for replacing the dependency of a server with a 'local' buffer
@@ -23,7 +23,7 @@ Tested with:
  * Chrome (ver. 31)
  
  NOTE: Chrome needs to be allowed to load local files, e.g. 
-       start with command line switch --allow-file-access-from-files
+       start with command line switch ```--allow-file-access-from-files```
 
 [0]: https://github.com/akrennmair/libmp3lame-js
 [1]: https://github.com/akrennmair/speech-to-server
