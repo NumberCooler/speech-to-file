@@ -25,11 +25,29 @@ Tested with:
  NOTE: Chrome needs to be allowed to load local files, e.g. 
        start with command line switch ```--allow-file-access-from-files```
 
-[0]: https://github.com/akrennmair/libmp3lame-js
-[1]: https://github.com/akrennmair/speech-to-server
-[2]: http://webaudiodemos.appspot.com/AudioRecorder/index.html
+Demo
+----
+Try out at the [demo page][3].
+
+Setup:
+ * your device needs a microphone
+ * accept, when asked to allow your browser access to the microphone
+
+Usage:
+ * press `Start recording` will start recording (you may need to allow your browser access to your mircophone in this step)
+ * pressing `Stop recording` will open a dialog for downloading the recorded MP3 file
+ * note: recording & encoding to MP3 is done all on the client-side (i.e. within your browser); no data is sent to a server. 
+
+**NOTE:**
+If you access the demo page via `https`, most browser will make the permission for accessing your microphone from this page will be persistent; if accessed via `http` the permission only lasts until you leave the page.
 
 License
 -------
 
 See file LICENSE for further information.
+
+
+[0]: https://github.com/akrennmair/libmp3lame-js
+[1]: https://github.com/akrennmair/speech-to-server
+[2]: http://webaudiodemos.appspot.com/AudioRecorder/index.html
+[3]: http://mmig.github.io/speech-to-file/
