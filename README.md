@@ -49,5 +49,5 @@ See file LICENSE for further information.
 
 [0]: https://github.com/akrennmair/libmp3lame-js
 [1]: https://github.com/akrennmair/speech-to-server
-[2]: http://webaudiodemos.appspot.com/AudioRecorder/index.html
-[3]: http://mmig.github.io/speech-to-file/
+[2]: https://webaudiodemos.appspot.com/AudioRecorder/index.html
+[3]: https://mmig.github.io/speech-to-file/
