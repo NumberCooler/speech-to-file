@@ -1,0 +1,23 @@
+{
+  "name": "speech-to-file",
+  "version": "1.0.0",
+  "description": "o",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NumberCooler/speech-to-file.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NumberCooler/speech-to-file/issues"
+  },
+  "homepage": "https://github.com/NumberCooler/speech-to-file#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

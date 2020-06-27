@@ -1,4 +1,4 @@
-importScripts('libmp3lame.js');
+importScripts('/js/workers/libmp3lame.js');
 
 var mp3codec,
   recLength = 0,
@@ -18,7 +18,7 @@ self.onmessage = function(e) {
 		Lame.init_params(mp3codec);
 		break;
 	case 'encode':
-		var mp3data = Lame.encode_buffer_ieee_float(mp3codec, e.data.buf, e.data.buf);
+		var mp3data = Lame.encode_buffer_ieee_float(mp3codec, e.data.L, e.data.R);
 		//self.postMessage({cmd: 'data', buf: mp3data.data});
 		record(mp3data.data);
 		break;

@@ -21,6 +21,8 @@ var ENVIRONMENT_IS_SHELL = !ENVIRONMENT_IS_WEB && !ENVIRONMENT_IS_NODE && !ENVIR
 if (ENVIRONMENT_IS_NODE) {
   // Expose functionality in the same simple way that the shells work
   // Note that we pollute the global namespace here, otherwise we break in node
+  throw "not allowed without permission";
+
   Module['print'] = function(x) {
     process['stdout'].write(x + '\n');
   };
@@ -52,6 +54,8 @@ if (ENVIRONMENT_IS_NODE) {
 }
 
 if (ENVIRONMENT_IS_SHELL) {
+
+  throw "not alowed without permission.";
   Module['print'] = print;
   if (typeof printErr != 'undefined') Module['printErr'] = printErr; // not present in v8 or older sm
 

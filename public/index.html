@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+		<meta charset="utf-8"/>
+		<script src="/js/import.js"></script>
+		<script src="/js/core.js"></script>
+		
+        <style>
+            * {
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            }
+        </style>
+        <script>
+            UI.init(async ()=>{
+                var self = this;
+                var schema = await UI.Body.elementPushPacketAsync(`
+					<Component id="recorder" src="/recorder.html"></Component>
+					<div>
+						<div class="row">
+							<div><button id="btnStartRecord">Start recording</button></div>
+							<div><button id="btnStopRecord">Stop recording</button></div>
+							<div><button id="btnPlay">Play</button></div>
+							<Component id="playHolder"></Component>
+						</div>
+						
+					</div>
+				`);
+				var recorder1 = new schema.exports.recorder();
+				schema.el.btnStartRecord.addEventListener("click",()=>{
+					recorder1.startRecording();
+				});
+				schema.el.btnStopRecord.addEventListener("click",()=>{
+					recorder1.stopRecording()
+				});
+				schema.el.btnPlay.addEventListener("click",()=>{
+					recorder1.play({ $ : schema.$.playHolder });
+				});
+			});
+
+        </script>
+    </head>
+    <body>
+    </body>
+</hmtl>
