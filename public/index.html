@@ -20,9 +20,12 @@
 							<div><button id="btnStartRecord">Start recording</button></div>
 							<div><button id="btnStopRecord">Stop recording</button></div>
 							<div><button id="btnPlay">Play</button></div>
+							<div><button id="btnSend">Send</button></div>
 							<Component id="playHolder"></Component>
 						</div>
-						
+					</div>
+					<div>
+						<Component id="list"></Component>
 					</div>
 				`);
 				var recorder1 = new schema.exports.recorder();
@@ -35,6 +38,48 @@
 				schema.el.btnPlay.addEventListener("click",()=>{
 					recorder1.play({ $ : schema.$.playHolder });
 				});
+				schema.el.btnSend.addEventListener("click",()=>{
+					Import({url:"/send",method:"POST",type:Import.Binary,data : recorder1.blob })
+					.done((data)=>{
+						console.log(data);
+					})
+					.send();
+				});
+
+				async function addItem(item) {
+					var schema1 = await schema.$.list.elementPushPacketAsync(`
+						<table border="1">
+							<tr id="item" style="cursor:pointer;">
+								<td>${item.id}</td>
+								<td>${item.date}</td>
+								<td><a href="/messages/user1/${item.file}.mp3" download>download</a></td>
+							</tr>
+						</table>
+						<Component id="holder"></Component>
+					`);
+					schema1.el.item.addEventListener("click",async ()=>{
+						var schema2 = await schema1.$.holder.elementPushPacketAsync(`
+							<audio id="audio">
+								<source src={{this.file}} type="audio/mpeg">
+								Your browser does not support the audio tag.
+							</audio>  
+						`,{context:{file:`/messages/user1/${item.file}.mp3`}});
+						schema2.el.audio.play();
+					});
+				}
+
+				Import({url:"/list",method:"GET"})
+				.done((data)=>{
+					alert(data);
+					var json = JSON.parse(data);
+					if(json.result) {
+						for(var x = 0; x < json.data.length;x++) {
+							addItem(json.data[x]);
+						}
+					}
+				})
+				.send();
+
 			});
 
         </script>

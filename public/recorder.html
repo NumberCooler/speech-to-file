@@ -2,7 +2,6 @@
 
 <script>
     function recorder() {
-
         var $scope = this;
         $scope.stream = null;
         $scope.recording = false;
@@ -15,7 +14,6 @@
         $scope.bitrate = 64;
         $scope.bitrates = [ 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160, 192, 224, 256, 320 ];
         $scope.recordButtonStyle = "red-btn";
-
         $scope.startRecording = function(e) {
             if ($scope.recording)
                 return;
@@ -33,7 +31,7 @@
                     $scope.encoder = null;
                 }
             };
-            console.log( navigator.mediaDevices.getSupportedConstraints() );
+            //console.log( navigator.mediaDevices.getSupportedConstraints() );
             if(navigator.webkitGetUserMedia)
                 navigator.webkitGetUserMedia({ video: false, audio: true, channelCount : 2 }, $scope.gotUserMedia, $scope.userMediaFailed);
             else if(navigator.mozGetUserMedia)
@@ -127,13 +125,12 @@
                 }
             };
 
-            console.log( $scope.input.numberOfInputs , $scope.input.numberOfOutputs  );
+            //console.log( $scope.input.numberOfInputs , $scope.input.numberOfOutputs  );
 
             var gainNode = audio_context.createGain();
-            gainNode.gain.value = 1;
+            gainNode.gain.value = 3;
 
             var splitter = audio_context.createChannelSplitter(2);
-            
 
             $scope.input.connect(gainNode);
             //gainNode.connect($scope.node);
@@ -214,7 +211,6 @@
                 alert("no buffer loaded.");
             }
         }
-
     }
     this.module.exports = recorder;
 </script>
